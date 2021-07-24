@@ -1,10 +1,10 @@
 import express from "express";
-const app = express();
+import routes from "../routes";
 
-app.get("/", (request, response) => {
-  return response.json({ message: "Running" });
-});
+const app = express();
+app.use(express.json());
+app.use(routes);
 
 app.listen(5555, () => {
-  console.log("aplicação rodando na porta 5555");
+  console.log("Application running on port 5555");
 });
