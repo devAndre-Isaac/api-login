@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
 import { validationResult } from "express-validator";
-import { createCompanyValidator } from "../validation/companyValidation";
+import { createCompanyValidator } from "../validation/userValidator";
 
 const userRouter = Router();
 
