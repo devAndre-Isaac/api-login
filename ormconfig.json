@@ -1,10 +1,10 @@
 {
     "type": "postgres",
-    "host": "db",
+    "host": "localhost",
     "port": 5432,
     "username": "postgres",
     "password": "postgres",
-    "database": "login_postgres",
+    "database": "practicerest",
     "synchronize": true,
     "logging": false,
     "entities": [
@@ -13,12 +13,8 @@
     "migrations": [
        "src/migration/**/*.ts"
     ],
-    "subscribers": [
-       "src/subscriber/**/*.ts"
-    ],
     "cli": {
        "entitiesDir": "src/entity",
-       "migrationsDir": "src/migration",
-       "subscribersDir": "src/subscriber"
+       "migrationsDir": "src/migration"
     }
  }

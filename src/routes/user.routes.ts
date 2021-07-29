@@ -1,5 +1,7 @@
 import { Request, Response, Router } from "express";
 import { validationResult } from "express-validator";
+import { getRepository } from "typeorm";
+import { User } from "../entity/user";
 import { createCompanyValidator } from "../validation/userValidator";
 
 const userRouter = Router();
@@ -19,5 +21,12 @@ userRouter.post(
     return response.status(201).json(request.body);
   }
 );
+
+userRouter.post("/testCreate", async (req, res) => {
+  const repository = getRepository(User);
+  const user = repository.create(req.body);
+  await repository.save(user);
+  return res.status(201).json(user);
+});
 
 export default userRouter;
