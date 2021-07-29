@@ -1,8 +1,8 @@
 version: "3.7"
 
 services:
-    database_ignite:
-      image: login_postgres
+    database_login:
+      image: postgres
       container_name: login_postgres
       restart: always
       ports:
