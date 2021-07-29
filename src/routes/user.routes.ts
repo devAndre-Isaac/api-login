@@ -16,7 +16,7 @@ userRouter.post(
     if (!errors.isEmpty()) {
       return response.status(400).json({ errors: errors.array() });
     }
-    return response.status(201).json({ message: "OK" });
+    return response.status(201).json(request.body);
   }
 );
 
