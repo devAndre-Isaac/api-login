@@ -4,7 +4,7 @@ import { connection } from "./database";
 import express from "express";
 import routes from "./routes";
 
-async function tests() {
+async function serverOn() {
   await connection();
   const app = express();
   app.use(express.json());
@@ -14,4 +14,4 @@ async function tests() {
     console.log("Application running on port 5555");
   });
 }
-tests();
+serverOn();
