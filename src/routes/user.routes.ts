@@ -1,8 +1,8 @@
 import { Request, Response, Router } from "express";
 import { validationResult } from "express-validator";
-import { getRepository } from "typeorm";
-import { User } from "../entity/user";
+
 import { createCompanyValidator } from "../validation/userValidator";
+import * as controllers from "../controllers/user";
 
 const userRouter = Router();
 
@@ -13,20 +13,14 @@ userRouter.get("/", (request, response) => {
 userRouter.post(
   "/userCreate",
   createCompanyValidator,
-  (request: Request, response: Response) => {
+  async (request: Request, response: Response) => {
     const errors = validationResult(request);
     if (!errors.isEmpty()) {
       return response.status(400).json({ errors: errors.array() });
     }
-    return response.status(201).json(request.body);
+    const user = await controllers.create(request.body);
+    return response.status(201).json(user);
   }
 );
-
-userRouter.post("/testCreate", async (req, res) => {
-  const repository = getRepository(User);
-  const user = repository.create(req.body);
-  await repository.save(user);
-  return res.status(201).json(user);
-});
 
 export default userRouter;
