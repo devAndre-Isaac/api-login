@@ -1,9 +1,8 @@
 import { UserInterface } from "../interfaces/user";
+import * as repository from "../repositories/user";
 
 export const create = async (
-    userBody: UserInterface,
+  userBody: UserInterface
 ): Promise<UserInterface> => {
-    console.log(userBody)
-    return userBody
-
-}
+  return repository.create(userBody);
+};
