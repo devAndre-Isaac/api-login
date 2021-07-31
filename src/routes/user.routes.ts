@@ -11,7 +11,7 @@ userRouter.get("/", (request, response) => {
 });
 
 userRouter.post(
-  "/userCreate",
+  "/createUser",
   createCompanyValidator,
   async (request: Request, response: Response) => {
     const errors = validationResult(request);
