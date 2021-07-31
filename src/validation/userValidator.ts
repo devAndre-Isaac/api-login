@@ -1,6 +1,8 @@
-import { body } from "express-validator";
+import { param, body } from "express-validator";
 
-export const createCompanyValidator = [
+export const idValidator = [param("id").isUUID()];
+
+export const createUserValidator = [
   body("name")
     .isLength({ max: 50 })
     .not()
@@ -14,3 +16,5 @@ export const createCompanyValidator = [
     .notEmpty()
     .withMessage("O campo senha é obrigatório."),
 ];
+
+export const updateUserValidator = idValidator.concat(createUserValidator);
