@@ -1,8 +1,9 @@
-import { request, Request, Response, Router } from "express";
+import { Request, Response, Router } from "express";
 import { validationResult } from "express-validator";
 
 import * as validation from "../validation/userValidator";
 import * as controllers from "../controllers/user";
+import { getValidData } from "../validation/validatorHandle";
 
 const userRouter = Router();
 
@@ -27,7 +28,13 @@ userRouter.put(
   "/:id",
   validation.updateUserValidator,
   async (request: Request, response: Response) => {
-    return response.status(200).json({ message: "Updated User" });
+    const { params } = getValidData(request);
+    const userUpdate = await controllers.updateUserById(
+      params.id,
+      request.body
+    );
+
+    return response.status(200).json(userUpdate);
   }
 );
 
