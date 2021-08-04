@@ -4,11 +4,17 @@ import { validationResult } from "express-validator";
 import * as validation from "../validation/userValidator";
 import * as controllers from "../controllers/user";
 import { getValidData } from "../validation/validatorHandle";
+import { User } from "../entity/user";
+import { getRepository } from "typeorm";
 
 const userRouter = Router();
 
-userRouter.get("/", (request, response) => {
-  return response.json({ message: "Ok" });
+userRouter.get("/", async (request, response) => {
+  const repository = getRepository(User);
+
+  const users =  await repository.find();
+  return response.json(users);
+  
 });
 
 userRouter.post(
