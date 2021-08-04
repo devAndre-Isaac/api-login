@@ -24,3 +24,7 @@ export const updateById = async (
     .execute();
   return updateRes.raw;
 };
+
+export const getAll = async (): Promise<UserInterface[]> => {
+  return getRepository(User).find();
+};
