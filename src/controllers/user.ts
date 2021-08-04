@@ -15,3 +15,7 @@ export const updateUserById = async (
 
   return user;
 };
+
+export const getAllUsers = async (): Promise<UserInterface[]> => {
+  return repository.getAll();
+};
