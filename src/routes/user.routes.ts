@@ -10,11 +10,8 @@ import { getRepository } from "typeorm";
 const userRouter = Router();
 
 userRouter.get("/", async (request, response) => {
-  const repository = getRepository(User);
-
-  const users =  await repository.find();
-  return response.json(users);
-  
+  const usersGet = await controllers.getAllUsers();
+  return response.status(200).json(usersGet);
 });
 
 userRouter.post(
