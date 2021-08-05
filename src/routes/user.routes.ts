@@ -4,8 +4,6 @@ import { validationResult } from "express-validator";
 import * as validation from "../validation/userValidator";
 import * as controllers from "../controllers/user";
 import { getValidData } from "../validation/validatorHandle";
-import { User } from "../entity/user";
-import { getRepository } from "typeorm";
 
 const userRouter = Router();
 
