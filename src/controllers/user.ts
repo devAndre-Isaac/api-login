@@ -1,5 +1,6 @@
 import { UserInterface, UserUpdateInterface } from "../interfaces/user";
 import * as repository from "../repositories/user";
+import { HttpError } from "../validation/HttpError";
 
 export const create = async (
   userBody: UserInterface
@@ -18,4 +19,10 @@ export const updateUserById = async (
 
 export const getAllUsers = async (): Promise<UserInterface[]> => {
   return repository.getAll();
+};
+
+export const remove = async (id: string): Promise<void> => {
+  const result = await repository.remove(id);
+
+  if (!result.affected) throw new HttpError(404, "User not found");
 };
