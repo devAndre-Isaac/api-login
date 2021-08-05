@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import { validationResult } from "express-validator";
+import { param, validationResult } from "express-validator";
 
 import * as validation from "../validation/userValidator";
 import * as controllers from "../controllers/user";
@@ -36,6 +36,17 @@ userRouter.put(
     );
 
     return response.status(200).json(userUpdate);
+  }
+);
+
+userRouter.delete(
+  "/:id",
+  validation.idValidator,
+  async (request: Request, response: Response) => {
+    const { params } = getValidData(request);
+    const userDelete = await controllers.remove(params.id);
+
+    return response.status(204).json(userDelete);
   }
 );
 
