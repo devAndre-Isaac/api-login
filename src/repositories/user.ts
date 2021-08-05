@@ -4,7 +4,7 @@ import {
   UserUpdateInterface,
 } from "../interfaces/user";
 import { User } from "../entity/user";
-import { createQueryBuilder, getRepository } from "typeorm";
+import { createQueryBuilder, DeleteResult, getRepository } from "typeorm";
 
 export const create = async (
   UserObject: UserInterface
@@ -27,4 +27,8 @@ export const updateById = async (
 
 export const getAll = async (): Promise<UserInterface[]> => {
   return getRepository(User).find();
+};
+
+export const remove = async (id: string): Promise<DeleteResult> => {
+  return getRepository(User).delete({ id });
 };
