@@ -13,7 +13,7 @@ export const create = async (
 
 export const updateBussinesById = async (
   id: string,
-  bussinesBody: BussinesUpdateInterface
+  bussinesBody: BussinesUpdateInterface,
 ): Promise<BussinesInterface> => {
   const [bussines] = await repository.updateById(bussinesBody, id);
 
