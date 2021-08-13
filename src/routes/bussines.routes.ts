@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import { header, param, validationResult } from "express-validator";
+import { validationResult } from "express-validator";
 
 import * as validation from "../validation/bussinesValidator";
 import * as controllers from "../controllers/bussines";
@@ -32,7 +32,7 @@ bussinesRouter.put(
     const { params } = getValidData(request);
     const bussinesUpdate = await controllers.updateBussinesById(
       params.id,
-      request.body,
+      request.body
     );
 
     return response.status(200).json(bussinesUpdate);
