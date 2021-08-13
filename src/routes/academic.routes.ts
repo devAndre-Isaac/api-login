@@ -6,7 +6,7 @@ import { Academic } from "../entity/academic";
 const academicRouter = Router();
 
 academicRouter.get("/", async (request, response) => {
-  return response.json({ message: "Exquece" });
+  return response.json({ message: "Ok" });
 });
 
 academicRouter.post("/", async (request, response) => {
