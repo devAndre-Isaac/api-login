@@ -1,10 +1,6 @@
-import {
-  UpdateAcademicResponse,
-  AcademicInterface,
-  AcademicUpdateInterface,
-} from "../interfaces/academic";
+import { AcademicInterface } from "../interfaces/academic";
 import { Academic } from "../entity/academic";
-import { createQueryBuilder, DeleteResult, getRepository } from "typeorm";
+import { getRepository } from "typeorm";
 
 export const create = async (
   AcademicObject: AcademicInterface
