@@ -1,11 +1,15 @@
 import { Router } from "express";
 import { validationResult } from "express-validator";
+import { getRepository } from "typeorm";
 import * as controllers from "../controllers/academic";
+import { Academic } from "../entity/academic";
 
 const academicRouter = Router();
 
 academicRouter.get("/", async (request, response) => {
-  return response.json({ message: "Ok" });
+  const repository = getRepository(Academic)
+  const academicToRead = await repository.find()
+  return response.json(academicToRead);
 });
 
 academicRouter.post("/createAcademic", async (request, response) => {
