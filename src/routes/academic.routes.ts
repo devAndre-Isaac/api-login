@@ -8,7 +8,7 @@ academicRouter.get("/", async (request, response) => {
   return response.json({ message: "Ok" });
 });
 
-academicRouter.post("/", async (request, response) => {
+academicRouter.post("/createAcademic", async (request, response) => {
   const errors = validationResult(request);
   if (!errors.isEmpty()) {
     return response.status(400).json({ errors: errors.array() });
