@@ -5,9 +5,9 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   BeforeUpdate,
-  BeforeInsert
+  BeforeInsert,
 } from "typeorm";
-import bcrypt from 'bcrypt'
+import bcrypt from "bcrypt";
 @Entity("user")
 export class User {
   @PrimaryGeneratedColumn("uuid")
