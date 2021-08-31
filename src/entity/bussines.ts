@@ -4,7 +4,10 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  BeforeUpdate,
+  BeforeInsert,
 } from "typeorm";
+import bcrypt from "bcrypt";
 
 @Entity("bussines")
 export class Bussines {
@@ -22,6 +25,12 @@ export class Bussines {
 
   @Column()
   password: string;
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  hashPassword() {
+    this.password = bcrypt.hashSync(this.password, 8);
+  }
 
   @Column()
   image: string;
