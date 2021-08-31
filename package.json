@@ -12,6 +12,7 @@
     "test": "avanpm"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/node": "^16.4.3",
     "@types/sinon": "^10.0.2",
     "ava": "^3.15.0",
@@ -20,6 +21,7 @@
   },
   "dependencies": {
     "@types/express": "^4.17.13",
+    "bcrypt": "^5.0.1",
     "express": "^4.17.1",
     "express-validator": "^6.12.1",
     "pg": "^8.6.0",
